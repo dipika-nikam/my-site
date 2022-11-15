@@ -173,6 +173,18 @@ class BeauticianRegistrationView(APIView):
             'data': serializer.data
         })
 
+    def put(self, request, format=None):
+        beautician = Beautician.objects.get(user_id=request.user)
+        serializer = BeauticianRegistrationSerializer(
+            data=request.data, instance=beautician, partial=True)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return JsonResponse({
+            'status': 201,
+            'message': 'Beautician service updated successfully',
+            'data': serializer.data
+        })
+
 
 class BeauticianphotoView(APIView):
     permission_classes = [IsAuthenticated]
@@ -204,11 +216,20 @@ class BeauticianphotoView(APIView):
             })
 
     def get(self, request, format=None):
-        allimg = Beauticianphoto.objects.all()
+        user = User.objects.get(pk=request.user.id)
+        beautician= Beautician.objects.get(user_id=user.id)
+        allimg = Beauticianphoto.objects.filter(user_id=beautician)
         serializer = BeauticianphotoSerializer(allimg, many=True)
         return JsonResponse({
             'status': 200,
             'data': serializer.data
+        })
+
+    def delete(self, request):
+        id_li = request.query_params.getlist('id')
+        data = Beauticianphoto.objects.filter(id__in=id_li).delete()
+        return JsonResponse({
+            'message': 'Deleted Photo'
         })
 
 class ServicesView(APIView):

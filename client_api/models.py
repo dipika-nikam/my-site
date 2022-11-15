@@ -39,3 +39,30 @@ class AppointmentModel(models.Model):
 
     def __str__(self):
         return str(self.appointment_name)
+
+rating = (
+    (0, 0),
+    (1, 1),
+    (2, 2),
+    (3, 3),
+    (4, 4),
+    (5, 5)
+)
+class Ratingmodel(models.Model):
+    user_id = models.ForeignKey(User,on_delete=models.CASCADE)
+    beautician_id= models.ForeignKey(Beautician,  on_delete = models.CASCADE)
+    rating = models.CharField(choices=rating,max_length=255, default=0)
+    review = models.TextField(max_length=255, blank=True, null=True)
+
+    def __str__(self):
+        return str(self.beautician_id)
+
+
+class Blogmodel(models.Model):
+    user_id = models.ForeignKey(User,on_delete=models.CASCADE)
+    title = models.CharField(max_length=255)
+    image = models.ImageField(upload_to="images/blog",blank=True, null=True)
+    blog= models.TextField()
+
+    def __str__(self):
+        return str(self.title)

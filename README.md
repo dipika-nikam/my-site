@@ -9,4 +9,3 @@ python manage.py seed
 python manage.py runserver
 ```
 
-"# my-site" 
