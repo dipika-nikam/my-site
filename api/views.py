@@ -11,8 +11,6 @@ from rest_framework.generics import ListAPIView
 from .paginations import CustomPagePagination
 from client_api.models import BeauticianServices
 from client_api.serializers import BeauticianServicesSerializer, BeauticianServicesSerializerget
-from base64 import b64decode
-from io import BytesIO
 
 
 def get_tokens_for_user(user):

@@ -22,7 +22,7 @@ services = [
     },
     ]
 price = ['200','500','100','250']
-duration = ['30','60']
+duration = ['00:30','00:59']
 gender = ['Male','Female']
 
 

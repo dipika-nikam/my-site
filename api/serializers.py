@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from client_api.models import BeauticianServices
-from .models import User,Beautician, Beauticianphoto, Service, Contactus
+from .models import User,Beautician, Beauticianphoto, Service, Contactus, ServicesPhotos
 from django.utils.encoding import smart_str, force_bytes, DjangoUnicodeDecodeError
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.contrib.auth.tokens import PasswordResetTokenGenerator
@@ -150,3 +150,8 @@ class BeauticianSerializer(serializers.ModelSerializer):
     class Meta:
       model = Beautician
       fields =  ['id','first_name',]
+
+class ServicesPhotos(serializers.ModelSerializer):
+  class Meta:
+    model  = ServicesPhotos
+    fields = '__all__'

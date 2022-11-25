@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import AppointmentView,AvailabilitiesView,BeauticianServicesView,RatingView,BlogView,Paginationview
+from .views import AppointmentView,AvailabilitiesView,BeauticianServicesView,RatingView,BlogView,Paginationview,AppointmentConfirmation
 from rest_framework_simplejwt.views import (
     TokenObtainPairView,
     TokenRefreshView,
@@ -12,6 +12,7 @@ urlpatterns = [
     path('barber-services/', BeauticianServicesView.as_view(), name = 'Barberservices'),
     path('rating/', RatingView.as_view(), name = 'rating'),
     path('blog/', BlogView.as_view(), name = 'blog'),
-    path('page/',Paginationview.as_view(), name='pagination'),
+    path('appointment/page/',Paginationview.as_view(), name='pagination'),
+    path('appointment/confirmation/',AppointmentConfirmation.as_view(), name='confirmation'),
 
 ]

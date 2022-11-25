@@ -6,10 +6,10 @@ from .models import AppointmentModel,BeauticianAvailabilities,BeauticianServices
 
 
 class AppointmentSerlizer(serializers.ModelSerializer):
-  appointment_service = []
+  # appointment_service = []
   class Meta:
     model = AppointmentModel
-    exclude = ['user_id',]
+    exclude = ['user_id']
 
 class AvailabilitiesSerializers(serializers.ModelSerializer):
   class Meta:
